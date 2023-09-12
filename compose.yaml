@@ -6,7 +6,7 @@ services:
     container_name: frontend
     volumes:
       - ./frontend:/app
-      - frontend_node_modulesnode_modules:/app/node_modules
+      - frontend_node_modules:/app/node_modules
     command: npm run dev
 
   backend:
