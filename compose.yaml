@@ -1,0 +1,18 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:3000"
+    container_name: frontend
+    volumes:
+      - ./frontend:/app
+    command: npm run dev
+
+  backend:
+    build: ./backend
+    tty: true
+    container_name: communication_tool_backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "5050:80"
