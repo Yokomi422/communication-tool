@@ -1,5 +1,7 @@
 FROM python:3.10
 
+WORKDIR  /app
+
 RUN apt-get update &&\
     apt-get -y install locales &&\
     localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
@@ -20,9 +22,9 @@ ENV PATH /root/.local/bin:$PATH
 # Poetryが仮想環境を生成しないようにする
 RUN poetry config virtualenvs.create false
 
-COPY pyproject.toml /pyproject.toml
+COPY pyproject.toml poetry.lock ./
 
-RUN poetry add fastapi uvicorn[standard]
+RUN poetry install
 
 # コンテナ実行後に行いたいコマンドを記述する FastAPIの場合の例は下記
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
