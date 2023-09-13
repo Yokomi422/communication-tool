@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint:ci": "next lint",
+    "fmt": "npx prettier --write './src/**/*.{js,jsx,ts,tsx,json,md}'",
+    "fmt:ci": "npx prettier --check './src/**/*.{js,jsx,ts,tsx,json,md}'",
+    "check": "npm run lint:ci && npm run fmt:ci"
   },
   "dependencies": {
     "@types/node": "20.6.0",
@@ -21,5 +24,9 @@
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.3"
   }
 }
