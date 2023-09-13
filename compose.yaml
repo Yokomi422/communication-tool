@@ -17,6 +17,5 @@ services:
       - ./backend:/app
     ports:
       - "5050:80"
-
 volumes:
   frontend_node_modules:
