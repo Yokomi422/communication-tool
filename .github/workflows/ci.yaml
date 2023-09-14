@@ -22,7 +22,7 @@ jobs:
           cd ./frontend
           npm ci
           npm run build
-  format-check:
+  format-check-frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -42,3 +42,24 @@ jobs:
         run: |
           cd ./frontend
           npm run fmt:ci
+  format-check-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          cd ./backend
+          pip install poetry
+          poetry install
+      - name: Run Black
+        run: |
+          cd ./backend
+          poetry run black --check main.py
+      - name: Run Pylint
+        run: |
+          cd ./backend
+          poetry run pylint main.py
