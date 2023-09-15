@@ -17,6 +17,17 @@ services:
       - ./backend:/app
     ports:
       - "5050:80"
+  db:
+    image: postgres
+    container_name: communication_tool_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-store:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
 
 volumes:
   frontend_node_modules:
+  db-store:
