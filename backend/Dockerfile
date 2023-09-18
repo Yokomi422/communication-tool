@@ -27,4 +27,4 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry install
 
 # コンテナ実行後に行いたいコマンドを記述する FastAPIの場合の例は下記
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
