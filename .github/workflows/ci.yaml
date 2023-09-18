@@ -61,5 +61,5 @@ jobs:
           poetry run black --check .
       - name: Run Pylint
         run: |
-          cd ./backend
+          cd ./backend/app
           poetry run pylint .
