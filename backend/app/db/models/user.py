@@ -1,4 +1,4 @@
-from base import Base
+from .base import Base
 from sqlalchemy import Column, Integer, String, Sequence, DateTime
 from sqlalchemy.sql import func
 
